@@ -69,6 +69,10 @@ type RectChart struct {
 	xAxisData interface{}
 }
 
+type VennChart struct {
+	VennConfiguration
+}
+
 func (rc *RectChart) overlap() MultiSeries {
 	return rc.MultiSeries
 }

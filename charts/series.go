@@ -13,6 +13,8 @@ type SingleSeries struct {
 
 	// Bar
 	BarGap         string `json:"barGap,omitempty"`
+	BarWidth       string `json:"barWidth,omitempty"`
+	BarMinWidth    string `json:"barMinWidth,omitempty"`
 	BarCategoryGap string `json:"barCategoryGap,omitempty"`
 	ShowBackground bool   `json:"showBackground,omitempty"`
 	RoundCap       bool   `json:"roundCap,omitempty"`
@@ -163,6 +165,8 @@ func WithBarChartOpts(opt opts.BarChart) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.Stack = opt.Stack
 		s.BarGap = opt.BarGap
+		s.BarWidth = opt.BarWidth
+		s.BarMinWidth = opt.BarMinWidth
 		s.BarCategoryGap = opt.BarCategoryGap
 		s.XAxisIndex = opt.XAxisIndex
 		s.YAxisIndex = opt.YAxisIndex
@@ -417,4 +421,10 @@ func (ms *MultiSeries) SetSeriesOptions(opts ...SeriesOpts) {
 	for i := 0; i < len(s); i++ {
 		s[i].configureSeriesOpts(opts...)
 	}
+}
+
+type VennSerie struct {
+	Name string      `json:"name"`
+	Type string      `json:"type,omitempty"`
+	Data interface{} `json:"sets"`
 }

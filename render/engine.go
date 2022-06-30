@@ -42,7 +42,7 @@ func (r *pageRender) Render(w io.Writer) error {
 		fn()
 	}
 
-	contents := []string{tpls.HeaderTpl, tpls.BaseTpl, tpls.PageTpl}
+	contents := []string{tpls.HeaderTpl, tpls.BaseTpl, tpls.VennTpl, tpls.PageTpl}
 	tpl := MustTemplate(ModPage, contents)
 
 	var buf bytes.Buffer

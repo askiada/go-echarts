@@ -26,8 +26,9 @@ type Page struct {
 	opts.Initialization
 	opts.Assets
 
-	Charts []interface{}
-	Layout Layout
+	Charts     []interface{}
+	VennCharts []interface{}
+	Layout     Layout
 }
 
 // NewPage creates a new page.
@@ -58,6 +59,15 @@ func (page *Page) AddCharts(charts ...Charter) *Page {
 		}
 		charts[i].Validate()
 		page.Charts = append(page.Charts, charts[i])
+	}
+	return page
+}
+
+// AddCharts adds new charts to the page.
+func (page *Page) AddVennCharts(charts ...Charter) *Page {
+	for i := 0; i < len(charts); i++ {
+		charts[i].Validate()
+		page.VennCharts = append(page.VennCharts, charts[i])
 	}
 	return page
 }

@@ -15,8 +15,9 @@ type BarChart struct {
 	// In a single coordinate system, this attribute is shared by multiple 'bar' series.
 	// This attribute should be set on the last 'bar' series in the coordinate system,
 	// then it will be adopted by all 'bar' series in the coordinate system.
-	BarGap string
-
+	BarGap      string
+	BarWidth    string
+	BarMinWidth string
 	// The bar gap of a single series, defaults to be 20% of the category gap,
 	// can be set as a fixed value.
 	// In a single coordinate system, this attribute is shared by multiple 'bar' series.
@@ -695,4 +696,16 @@ type SunBurstData struct {
 	Value float64 `json:"value,omitempty"`
 	// sub item of data item
 	Children []*SunBurstData `json:"children,omitempty"`
+}
+
+// VennData
+type VennData struct {
+	// Name of data item.
+	Sets interface{} `json:"sets,omitempty"`
+
+	// The style setting of the text label in a single bar.
+	Label string `json:"label,omitempty"`
+
+	// ItemStyle settings in this series data.
+	Size int `json:"size,omitempty"`
 }
